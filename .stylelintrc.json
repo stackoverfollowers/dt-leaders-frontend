@@ -1,0 +1,39 @@
+{
+  "ignoreFiles": ["**/*"],
+  "overrides": [
+    {
+      "files": ["**/*.css"],
+      "extends": ["stylelint-config-standard", "stylelint-prettier/recommended", "stylelint-config-tailwindcss"],
+      "plugins": ["stylelint-order"],
+      "rules": {
+        "shorthand-property-no-redundant-values": true,
+        "declaration-block-no-redundant-longhand-properties": true,
+        "selector-pseudo-class-no-unknown": [
+          true,
+          {
+            "ignorePseudoClasses": ["global"]
+          }
+        ],
+        "function-name-case": "lower",
+        "selector-type-case": "lower",
+        "font-family-name-quotes": "always-where-recommended",
+        "declaration-block-single-line-max-declarations": 1,
+        "function-url-quotes": "always",
+        "length-zero-no-unit": [
+          true,
+          {
+            "ignore": ["custom-properties"]
+          }
+        ],
+        "rule-empty-line-before": [
+          "always-multi-line",
+          {
+            "except": ["first-nested"]
+          }
+        ],
+        "comment-whitespace-inside": "always",
+        "selector-class-pattern": "^[a-z-][a-zA-Z0-9-]+$"
+      }
+    }
+  ]
+}

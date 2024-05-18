@@ -1,0 +1,6 @@
+*.js
+*.mjs
+*.cjs
+**/node_modules
+**/public
+**/.next
