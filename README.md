@@ -1,30 +1,17 @@
-# React + TypeScript + Vite
+# Frontend template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[React](https://react.dev/) for web user interfaces
 
-Currently, two official plugins are available:
+[effector](https://effector.dev/) for business logic
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Farfetched](https://ff.effector.dev/) for advanced data fetching
 
-## Expanding the ESLint configuration
+[shadcn/ui](https://ui.shadcn.com/) - a collection of re-usable components ([tailwindcss](https://tailwindcss.com/))
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+[Feature-Sliced Design](https://effector.dev/) - architectural methodology for frontend projects
 
-- Configure the top-level `parserOptions` property like this:
+[Husky](https://typicode.github.io/husky/) for pre-commit lint hook
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+[React Router v6](https://typicode.github.io/husky/) for routing
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+[React Hook Form](https://react-hook-form.com/) for forms
