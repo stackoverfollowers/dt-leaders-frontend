@@ -1,30 +1,73 @@
-# React + TypeScript + Vite
+# Шаблон React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Стэк разработки
+- React
+- TypeScript
+- [effector](https://effector.dev/)
+- [Farfetched](https://ff.effector.dev/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [tailwindcss](https://tailwindcss.com/)
+- [Husky](https://typicode.github.io/husky/)
+- [React Router v6](https://typicode.github.io/husky/)
+- [React Hook Form](https://react-hook-form.com/)
 
-Currently, two official plugins are available:
+## Развертывание проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[NPM v10](https://docs.npmjs.com/) и [NodeJS v20](https://nodejs.org/ru/)
 
-## Expanding the ESLint configuration
+1. Выполняем команду:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-};
+```shell
+pnpm i
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Запуск для разработки:
+
+```shell
+pnpm run dev
+```
+
+## Дополнительные команды
+
+- Запуск тестов
+
+```shell
+pnpm run test
+```
+
+- Проверка ошибок связанных со стилем `JS/TS` кода
+
+```shell
+pnpm run lint
+```
+
+- Автоматическое исправление ошибок связанных со стилем `JS/TS` кода
+
+```shell
+pnpm run lint:fix
+```
+
+- Проверка ошибок связанных со стилем `CSS` кода
+
+```shell
+pnpm run stylelint
+```
+
+- Автоматическое исправление ошибок связанных со стилем `CSS` кода
+
+```shell
+pnpm run stylelint:fix
+```
+
+Прогонять линтеры в ручную необязательно, так как в проекте используется [husky](https://www.npmjs.com/package/husky) и
+[lint-staged](https://www.npmjs.com/package/lint-staged) для запуска `pre-commit` хуков.
+
+## Полезное
+
+- [Соглашение о коммитах](https://www.conventionalcommits.org/ru/)
+- [Семантического версионирования](https://semver.org/lang/ru/)
+- [Архитектурная методология для фронтенд проектов](https://feature-sliced.design/ru/)
+- Именованные экспорты вместо `default`
+- Без вложенных тернарных операторов
+- `SVG` файлы как `React` компоненты
+
