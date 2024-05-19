@@ -23,16 +23,16 @@ const SkeletonList = () => {
 };
 
 export const PostList = () => {
-  const { data: posts } = useUnit(postsQuery);
+  const { data } = useUnit(postsQuery);
 
-  if (!posts) {
+  if (!data) {
     return <SkeletonList />;
   }
 
   return (
     <div className="flex flex-col gap-4 md:gap-8">
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-        {posts.map((post, idx) => (
+        {data.posts.map((post, idx) => (
           <PostCard key={idx} post={post} />
         ))}
       </div>

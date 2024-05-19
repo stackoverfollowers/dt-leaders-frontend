@@ -4,8 +4,8 @@ import type { Post } from '../types';
 export const PostCard = ({ post }: Props) => {
   return (
     <Card className="h-40">
-      <CardHeader className="flex flex-row justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{post.title}</CardTitle>
+      <CardHeader className="flex flex-row justify-between space-y-0 space-x-2 pb-2">
+        <CardTitle className="text-sm font-medium line-clamp-1">{post.title}</CardTitle>
         <span className="text-muted-foreground">{post.id}</span>
       </CardHeader>
       <CardContent>
