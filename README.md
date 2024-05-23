@@ -71,3 +71,6 @@ pnpm run stylelint:fix
 - Без вложенных тернарных операторов
 - `SVG` файлы как `React` компоненты
 
+## Другое
+- [magicui.design](https://magicui.design/) - animated components built with React, Typescript, Tailwind CSS, and Framer Motion
+
