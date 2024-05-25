@@ -6,6 +6,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@ui/input';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { authModel } from '@features/auth';
 import * as model from '../model';
 
 const FormSchema = z.object({
@@ -36,6 +37,12 @@ export const AuthForm = () => {
     },
   });
 
+  const {
+    login
+  } = useUnit({
+    login: authModel.login
+  })
+
   const { type, toggle } = useUnit({
     type: model.$type,
     toggle: model.toggle,
@@ -44,7 +51,7 @@ export const AuthForm = () => {
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
     console.log('data', data);
     if (type === 'login') {
-      // login(data);
+      login(data);
     } else {
       // register(data);
     }

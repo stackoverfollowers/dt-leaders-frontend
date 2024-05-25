@@ -54,6 +54,7 @@
     "date-fns": "^3.6.0",
     "effector": "^23.2.1",
     "effector-react": "^23.2.0",
+    "effector-storage": "^7.1.0",
     "embla-carousel-react": "^8.1.1",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.378.0",

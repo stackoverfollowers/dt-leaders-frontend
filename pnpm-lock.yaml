@@ -119,6 +119,9 @@ dependencies:
   effector-react:
     specifier: ^23.2.0
     version: 23.2.0(effector@23.2.1)(react@18.3.1)
+  effector-storage:
+    specifier: ^7.1.0
+    version: 7.1.0(effector@23.2.1)
   embla-carousel-react:
     specifier: ^8.1.1
     version: 8.1.1(react@18.3.1)
@@ -2952,6 +2955,14 @@ packages:
       effector: 23.2.1
       react: 18.3.1
       use-sync-external-store: 1.2.2(react@18.3.1)
+    dev: false
+
+  /effector-storage@7.1.0(effector@23.2.1):
+    resolution: {integrity: sha512-l5+RR48g7ZKUldElHnJSkzPwiMeyoO7D+C/xM6g4MVHpM9Waty8HMuIas+udSXYE1Tf9i8xm/AGBhdRrMm2FIA==}
+    peerDependencies:
+      effector: ^22.4.0 || ^23.0.0
+    dependencies:
+      effector: 23.2.1
     dev: false
 
   /effector-swc-plugin@0.3.0(@swc/core@1.5.7):

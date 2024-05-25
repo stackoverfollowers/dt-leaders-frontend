@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { AuthProvider } from './auth';
 import { ThemeProvider } from './theme';
 
 interface IProviders {
@@ -9,7 +10,9 @@ interface IProviders {
 export const Providers: FC<IProviders> = ({ children }) => {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      {children}
+      <AuthProvider>
+        {children}
+      </AuthProvider>
     </ThemeProvider>
   );
 };

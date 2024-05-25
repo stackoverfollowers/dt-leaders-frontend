@@ -33,13 +33,14 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
   createEffect<P, R>((params) => {
     const { url, ...fetchOptions } = getConfig(payload, params);
 
-    if (withTokenInHeaders && headers) {
-      headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
-    }
+    const token = localStorage.getItem('token');
 
     return axios(url, {
       ...fetchOptions,
-      headers,
+      headers: {
+        ...headers,
+        ...(withTokenInHeaders && token && { Authorization: `Bearer ${token.replace(/"/g, '')}` }),
+      },
       baseURL,
     });
   });

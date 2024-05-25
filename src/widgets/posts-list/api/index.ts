@@ -1,9 +1,9 @@
 import { createQuery } from '@farfetched/core';
 import type { PaginatedPosts } from '@entities/post';
-import { createCommonRequestFx } from '@shared/api';
+import { createDummyJSONRequestFx } from '@shared/api';
 
 export const postsQuery = createQuery({
-  effect: createCommonRequestFx<void, PaginatedPosts>(() => ({
+  effect: createDummyJSONRequestFx<void, PaginatedPosts>(() => ({
     url: '/posts',
     params: {
       _start: 0,
