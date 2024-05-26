@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 import { createEffect } from 'effector';
 import { axios } from './axios';
 
@@ -29,8 +29,8 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
   headers,
   payload,
   withTokenInHeaders,
-}: CreateRequestInstanceParams<P>) =>
-  createEffect<P, R>((params) => {
+}: CreateRequestInstanceParams<P>) => {
+  const effectFx = createEffect<P, R>((params) => {
     const { url, ...fetchOptions } = getConfig(payload, params);
 
     const token = localStorage.getItem('token');
@@ -45,10 +45,24 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
     });
   });
 
-export const createRequestFx =
-  (params: CreateRequestFxParams) =>
-  <P = CreateRequestParams, R = void>(payload: Payload<P>) =>
-    createRequestInstance<P, R>({
+  // clear token on 401
+  effectFx.fail.watch(({ error }) => {
+    const status = (error as AxiosError).response?.status;
+    if (status === 401) {
+      localStorage.removeItem('token');
+    }
+  });
+
+  return effectFx;
+}
+  
+
+export const createRequestFx = (params: CreateRequestFxParams) => {
+  return <P = CreateRequestParams, R = void>(payload: Payload<P>) => {
+    return createRequestInstance<P, R>({
       ...(params as CreateRequestParams),
       payload,
-    });
+    })
+  }
+}
+

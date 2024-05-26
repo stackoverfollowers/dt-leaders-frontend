@@ -1,16 +1,9 @@
+import { Pagination } from '@components/pagination';
 import { useUnit } from '@lib/effector';
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@ui/pagination';
 import { Skeleton } from '@ui/skeleton';
 import { PostCard } from '@entities/post';
 import { postsQuery } from '../api';
+import { postsModel } from '../model';
 
 const SkeletonList = () => {
   return (
@@ -24,8 +17,19 @@ const SkeletonList = () => {
 
 export const PostList = () => {
   const { data } = useUnit(postsQuery);
+  const { 
+    page,
+    limit,
+    isLoading,
+    setPage
+  } = useUnit({
+    page: postsModel.$page,
+    limit: postsModel.$limit,
+    isLoading: postsModel.$isLoading,
+    setPage: postsModel.setPage
+  })
 
-  if (!data) {
+  if (!data || isLoading) {
     return <SkeletonList />;
   }
 
@@ -36,37 +40,13 @@ export const PostList = () => {
           <PostCard key={idx} post={post} />
         ))}
       </div>
-      <Pagination className="sm:justify-end">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious to="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink to="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink to="#">2</PaginationLink>
-          </PaginationItem>
-          {/* <PaginationItem>
-            <PaginationLink to="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink to="#">4</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink to="#">5</PaginationLink>
-          </PaginationItem> */}
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink to="#">10</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext to="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <Pagination 
+        className="sm:justify-end"
+        value={page}
+        onChange={setPage}
+        total={data.total} 
+        limit={limit} 
+      />
     </div>
   );
 };

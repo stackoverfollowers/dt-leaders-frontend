@@ -1,6 +1,6 @@
 import { createEvent, createStore, sample } from '@lib/effector';
 import { persist } from 'effector-storage/local'
-import { loginQuery } from '../api';
+import { loginQuery, registerQuery } from '../api';
 import type { LoginParams, RegisterParams } from '../types';
 
 export const login = createEvent<LoginParams>();
@@ -18,6 +18,17 @@ sample({
 
 sample({
   clock: loginQuery.finished.success,
+  fn: ({ result }) => result.token,
+  target: $token,
+})
+
+sample({
+  clock: register,
+  target: registerQuery.start,
+})
+
+sample({
+  clock: registerQuery.finished.success,
   fn: ({ result }) => result.token,
   target: $token,
 })

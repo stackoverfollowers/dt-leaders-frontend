@@ -38,9 +38,11 @@ export const AuthForm = () => {
   });
 
   const {
-    login
+    login,
+    register,
   } = useUnit({
-    login: authModel.login
+    login: authModel.login,
+    register: authModel.register,
   })
 
   const { type, toggle } = useUnit({
@@ -49,12 +51,7 @@ export const AuthForm = () => {
   });
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log('data', data);
-    if (type === 'login') {
-      login(data);
-    } else {
-      // register(data);
-    }
+    return type === 'login' ? login(data) : register(data);
   };
 
   return (

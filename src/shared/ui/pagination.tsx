@@ -2,7 +2,6 @@ import { cn } from '@lib/utils';
 import { ButtonProps, buttonVariants } from '@ui/button';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
@@ -29,10 +28,10 @@ PaginationItem.displayName = 'PaginationItem';
 type PaginationLinkProps = {
   isActive?: boolean;
 } & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<typeof Link>;
+  React.ComponentProps<'button'>;
 
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
-  <Link
+  <button
     aria-current={isActive ? 'page' : undefined}
     className={cn(
       buttonVariants({
@@ -53,7 +52,7 @@ const PaginationPrevious = ({
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
-    className={cn('gap-1 pl-2.5', className)}
+    className={cn('gap-1 px-3', className)}
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
@@ -66,7 +65,7 @@ const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof Pag
   <PaginationLink
     aria-label="Go to next page"
     size="default"
-    className={cn('gap-1 pr-2.5', className)}
+    className={cn('gap-1 px-3', className)}
     {...props}
   >
     {/* <span className='hidden sm:block'>Next</span> */}

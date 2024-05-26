@@ -3,11 +3,16 @@ import type { PaginatedPosts } from '@entities/post';
 import { createDummyJSONRequestFx } from '@shared/api';
 
 export const postsQuery = createQuery({
-  effect: createDummyJSONRequestFx<void, PaginatedPosts>(() => ({
+  effect: createDummyJSONRequestFx<PostsParams, PaginatedPosts>(({ skip = 0, limit = 12 }) => ({
     url: '/posts',
     params: {
-      _start: 0,
-      _limit: 12,
+      skip,
+      limit
     },
   })),
 });
+
+type PostsParams = {
+  skip?: number;
+  limit?: number;
+};
