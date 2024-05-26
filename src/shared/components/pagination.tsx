@@ -10,8 +10,8 @@ import {
 
 export const Pagination = ({ total, limit = 12, skip = 0, value, onChange, boundaries = 1, siblings = 1, ...rest }: Props) => {
   const totalPages = Math.ceil(total / limit);
-  const currentPage = value ?? Math.floor(skip / limit) + 1;
-
+  const currentPage = Number(value) ?? Math.floor(skip / limit) + 1;
+  
   const startPage = Math.max(1, currentPage - siblings);
   const endPage = Math.min(totalPages, currentPage + siblings);
 
@@ -96,7 +96,7 @@ export const Pagination = ({ total, limit = 12, skip = 0, value, onChange, bound
 }
 
 type Props = Omit<React.ComponentProps<typeof PaginationComponent>, 'onChange'> & {
-  value?: number;
+  value?: number | string;
   onChange?: (value: number) => void;
   total: number;
   limit?: number;
