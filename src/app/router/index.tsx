@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { PostsPage } from '@pages/posts';
 import { RootPage } from '@pages/root';
+import { SchedulePage } from '@pages/schedule';
 import { Layout } from '../layout';
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: '/posts',
         element: <PostsPage />,
+      },
+      {
+        path: '/schedule',
+        element: <SchedulePage />,
       },
     ],
   },

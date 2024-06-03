@@ -16,6 +16,10 @@ export const navConfig: NavConfig = {
       href: '/docs',
       disabled: true,
     },
+    {
+      title: 'Расписание',
+      href: '/schedule',
+    }
   ],
   titles: {
     '/': 'Не грози южному Python, компилируя код у себя на Go',
